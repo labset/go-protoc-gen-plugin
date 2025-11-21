@@ -43,3 +43,4 @@ linters:
         main:
           allow:
             - $gostd
+            - google.golang.org/protobuf
