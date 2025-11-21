@@ -14,7 +14,8 @@
   "author": "Hasnae R.",
   "scripts": {
     "claude": "claude",
-    "lint": "./bin/lint.sh"
+    "lint": "./bin/lint.sh",
+    "build": "./bin/build.sh"
   },
   "devDependencies": {
     "@anthropic-ai/claude-code": "^2.0.49"
