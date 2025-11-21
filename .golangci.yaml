@@ -35,9 +35,6 @@ linters:
     - whitespace
     - wsl_v5
   settings:
-    allow-first-in-block: true
-    allow-whole-block: false
-    branch-max-lines: 2
     depguard:
       rules:
         main:
