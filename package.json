@@ -13,7 +13,8 @@
   "license": "Apache-2.0",
   "author": "Hasnae R.",
   "scripts": {
-    "claude": "claude"
+    "claude": "claude",
+    "lint": "./bin/lint.sh"
   },
   "devDependencies": {
     "@anthropic-ai/claude-code": "^2.0.49"

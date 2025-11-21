@@ -1,18 +1,45 @@
+version: "2"
+
+formatters:
+  enable:
+    - gofmt
+    - goimports
+    - golines
+
 linters:
   enable:
-    - govet
-    - errcheck
-    - ineffassign
-    - staticcheck
-    - unused
-    - gosimple
-    - goconst
-    - typecheck
-    - gosec
+    - copyloopvar
+    - err113
+    - errorlint
+    - exptostd
     - depguard
-    - gofmt
-
-output:
-  formats:
-    - format: colored-line-number
-  sort-results: true
+    - fatcontext
+    - gocritic
+    - govet
+    - iface
+    - importas
+    - intrange
+    - mirror
+    - misspell
+    - nakedret
+    - nlreturn
+    - nolintlint
+    - perfsprint
+    - protogetter
+    - sloglint
+    - staticcheck
+    - tagalign
+    - testifylint
+    - usestdlibvars
+    - usetesting
+    - whitespace
+    - wsl_v5
+  settings:
+    allow-first-in-block: true
+    allow-whole-block: false
+    branch-max-lines: 2
+    depguard:
+      rules:
+        main:
+          allow:
+            - $gostd
