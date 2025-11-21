@@ -13,10 +13,10 @@ Template repository for creating protoc plugins in Go.
 
 ```bash
 # Lint
-npm run lint
+make lint
 
 # Build (creates dist/ with cross-platform binaries)
-npm run build
+make build
 
 # Install locally
 go install ./cmd
