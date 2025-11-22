@@ -4,26 +4,61 @@
 
 Template repository for creating protoc plugins in Go.
 
-## Prerequisites
+### usage
+
+- install it
+
+````bash
+go install github.com/<username>/go-protoc-gen-plugin/cmd@latest
+````
+
+## Development
+
+### requirements
 
 - Go 1.23.1+
 - Docker (for build/lint)
 
-## Development
+### housekeeping tasks
+
+- install dependencies
 
 ```bash
-# Lint
-make lint
-
-# Build (creates dist/ with cross-platform binaries)
-make build
-
-# Install locally
-go install ./cmd
+go mod download
 ```
 
-## Usage
+- generate code
 
 ```bash
-go install github.com/<username>/go-protoc-gen-plugin/cmd@latest
+./bin/task buf generate
+```
+
+- lint the protos
+
+```bash
+./bin/task buf lint
+```
+
+- format the protos
+
+```bash
+./bin/task buf format --write
+```
+
+- lint and format the Go code
+
+```bash
+./bin/task lint --fix
+```
+
+- build the binaries
+
+```bash
+./bin/task build
+```
+
+- install it locally
+
+```bash
+go install ./cmd/...
 ```
