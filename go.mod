@@ -1,4 +1,4 @@
-module github.com/viqueen/go-protoc-gen-plugin
+module github.com/labset/go-protoc-gen-plugin
 
 go 1.25.3
 
