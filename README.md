@@ -16,49 +16,52 @@ go install github.com/<username>/go-protoc-gen-plugin/cmd@latest
 
 ### requirements
 
-- Go 1.23.1+
-- Docker (for build/lint)
+- [mise](https://mise.jdx.dev/) — manages `go`, `buf`, `golangci-lint` and `goreleaser` versions (see `.mise.toml`)
+
+```bash
+mise install
+```
 
 ### housekeeping tasks
 
 - install dependencies
 
 ```bash
-go mod download
+mise run deps
 ```
 
-- generate code
+- generate code from proto files
 
 ```bash
-./bin/task buf generate
+mise run generate
 ```
 
 - lint the protos
 
 ```bash
-./bin/task buf lint
+mise run buf:lint
 ```
 
 - format the protos
 
 ```bash
-./bin/task buf format --write
+mise run buf:format
 ```
 
-- lint and format the Go code
+- lint the Go code
 
 ```bash
-./bin/task lint --fix
+mise run lint
 ```
 
 - build the binaries
 
 ```bash
-./bin/task build
+mise run build
 ```
 
 - install it locally
 
 ```bash
-go install ./cmd/...
+mise run install
 ```

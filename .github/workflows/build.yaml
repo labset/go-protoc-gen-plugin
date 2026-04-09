@@ -12,22 +12,12 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-        with:
-          go-version: 1.25
-      - uses: golangci/golangci-lint-action@v7
-        with:
-          version: v2.5.0
+      - uses: jdx/mise-action@v2
+      - run: mise run lint
 
   build:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-        with:
-          go-version: 1.25
-      - uses: goreleaser/goreleaser-action@v6
-        with:
-          distribution: goreleaser
-          version: 2.3.2
-          args: build --clean --snapshot
+      - uses: jdx/mise-action@v2
+      - run: mise run build
