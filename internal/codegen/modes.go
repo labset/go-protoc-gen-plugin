@@ -24,15 +24,18 @@ type params struct {
 
 func parseParams(raw string) params {
 	p := params{}
+
 	for _, param := range strings.Split(raw, ",") {
 		key, value, ok := strings.Cut(param, "=")
 		if !ok {
 			continue
 		}
+
 		switch strings.TrimSpace(key) {
 		case "mode":
 			p.mode = strings.TrimSpace(value)
 		}
 	}
+
 	return p
 }

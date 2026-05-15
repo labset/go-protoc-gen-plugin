@@ -11,6 +11,7 @@ func main() {
 		if err != nil {
 			return err
 		}
+
 		return generator.Generate(plugin)
 	})
 }

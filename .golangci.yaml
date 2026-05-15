@@ -40,4 +40,5 @@ linters:
         main:
           allow:
             - $gostd
+            - github.com/labset/go-protoc-gen-plugin/
             - google.golang.org/protobuf

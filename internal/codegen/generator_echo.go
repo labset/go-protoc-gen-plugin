@@ -13,7 +13,9 @@ func (g *echoGenerator) Generate(plugin *protogen.Plugin) error {
 		if !file.Generate {
 			continue
 		}
+
 		fmt.Printf("Generating %s...\n", file.GeneratedFilenamePrefix)
 	}
+
 	return nil
 }
