@@ -8,7 +8,8 @@ before:
     - go test ./...
 
 builds:
-  - main: cmd/main.go
+  - main: cmd/protoc-gen-echo/main.go
+    id: protoc-gen-echo
     env:
       - CGO_ENABLED=0
     goos:
