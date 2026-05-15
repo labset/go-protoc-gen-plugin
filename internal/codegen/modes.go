@@ -17,9 +17,7 @@ func GeneratorForMode(raw string) (Generator, error) {
 
 // params holds parsed plugin parameters.
 type params struct {
-	mode          string
-	backendModule string
-	target        string
+	mode string
 }
 
 func parseParams(raw string) params {
