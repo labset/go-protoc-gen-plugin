@@ -18,7 +18,8 @@ run = "goreleaser build --clean --snapshot"
 
 [tasks.generate]
 description = "Generate code from proto files"
-run = "buf generate"
+dir = "schema"
+run = "buf generate --template buf.gen.api.yaml"
 
 [tasks."buf:lint"]
 description = "Lint proto files"
