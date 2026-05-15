@@ -17,6 +17,15 @@ builds:
       - windows
       - darwin
 
+  - main: cmd/echo-lint-plugin/main.go
+    id: echo-lint-plugin
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+
 archives:
   - format: tar.gz
     # this name template makes the OS and Arch compatible with the results of `uname`.

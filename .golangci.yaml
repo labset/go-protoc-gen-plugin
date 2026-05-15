@@ -18,5 +18,6 @@ linters:
         main:
           allow:
             - $gostd
+            - buf.build/go/bufplugin/check
             - github.com/labset/go-protoc-gen-plugin/
             - google.golang.org/protobuf
