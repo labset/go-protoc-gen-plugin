@@ -1,0 +1,39 @@
+name: dependabot-security-label
+
+# Dependabot security updates bypass the cooldown/soak configured in
+# dependabot.yml and open immediately. This workflow tags those PRs with the
+# `security` label so they stand out from routine version bumps.
+#
+# Requires a Dependabot secret named DEPENDABOT_ALERT_TOKEN — a fine-grained PAT
+# (or App token) with "Dependabot alerts: read" — because alert-lookup does not
+# work with the default GITHUB_TOKEN. Until that secret is set the workflow is a
+# no-op. Add it with:
+#   gh secret set DEPENDABOT_ALERT_TOKEN --app dependabot --body <token>
+
+on: pull_request
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  label-security:
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-24.04
+    env:
+      ALERT_TOKEN: ${{ secrets.DEPENDABOT_ALERT_TOKEN }}
+    steps:
+      - name: Fetch Dependabot metadata
+        id: meta
+        if: env.ALERT_TOKEN != ''
+        uses: dependabot/fetch-metadata@v3.1.0
+        with:
+          alert-lookup: true
+          github-token: ${{ env.ALERT_TOKEN }}
+
+      - name: Label security updates
+        if: steps.meta.outputs.ghsa-id != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: gh pr edit "$PR_URL" --add-label security
