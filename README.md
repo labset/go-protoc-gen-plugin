@@ -91,3 +91,31 @@ mise run build
 ```bash
 mise run clean
 ```
+
+### releasing
+
+Releases are cut by [GoReleaser](https://goreleaser.com/) from the `release` workflow, which
+triggers when a GitHub release is created. It builds the binaries, publishes the archives to the
+release, and pushes a Homebrew formula to the tap.
+
+**One-time setup** (required before the first release publishes the Homebrew tap):
+
+1. Create the tap repository `labset/homebrew-tap` (an empty repo is fine) — GoReleaser commits the
+   generated formula into it.
+2. Add a `HOMEBREW_TAP_GITHUB_TOKEN` repository secret — a GitHub personal access token with
+   `contents: write` permission on `labset/homebrew-tap`. The default `GITHUB_TOKEN` cannot push to
+   another repository, so this separate token is required.
+
+**Cutting a release:**
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+# then create a GitHub release for the tag (this triggers the release workflow)
+```
+
+To validate the release pipeline locally without publishing:
+
+```bash
+mise run build   # goreleaser build --clean --snapshot
+```
