@@ -1,4 +1,4 @@
-module github.com/labset/go-protoc-gen-plugin
+module github.com/labset/go-protobuf-toolchain-template
 
 go 1.25.3
 
