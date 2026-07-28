@@ -4,6 +4,18 @@
 
 Template repository for building protobuf toolchains (protoc plugins) in Go.
 
+### using this template
+
+This template uses `labset` as the GitHub org. After creating your repo, replace it with your own:
+
+```bash
+grep -rl labset . --exclude-dir=.git | xargs sed -i '' 's/labset/YOUR_ORG/g'   # sed -i on Linux
+```
+
+This covers the Go module path and imports, the Homebrew tap owner, and the install commands below.
+Run `go mod tidy` afterwards. If you also rename the repo, update `go-protobuf-toolchain-template`
+to match.
+
 ### usage
 
 - install it with Homebrew
@@ -40,7 +52,7 @@ or pin them in a project's `mise.toml`:
 
 ### requirements
 
-- [mise](https://mise.jdx.dev/) — manages `go`, `buf`, `golangci-lint` and `goreleaser` versions (see `.config/mise/conf.d`)
+- [mise](https://mise.jdx.dev/) manages `go`, `buf`, `golangci-lint` and `goreleaser` versions (see `.config/mise/conf.d`)
 
 ```bash
 mise install
@@ -100,9 +112,9 @@ release, and pushes a Homebrew formula to the tap.
 
 **One-time setup** (required before the first release publishes the Homebrew tap):
 
-1. Create the tap repository `labset/homebrew-tap` (an empty repo is fine) — GoReleaser commits the
+1. Create the tap repository `labset/homebrew-tap` (an empty repo is fine). GoReleaser commits the
    generated formula into it.
-2. Add a `HOMEBREW_TAP_GITHUB_TOKEN` repository secret — a GitHub personal access token with
+2. Add a `HOMEBREW_TAP_GITHUB_TOKEN` repository secret, a GitHub personal access token with
    `contents: write` permission on `labset/homebrew-tap`. The default `GITHUB_TOKEN` cannot push to
    another repository, so this separate token is required.
 
