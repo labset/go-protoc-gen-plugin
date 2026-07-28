@@ -6,11 +6,35 @@ Template repository for building protobuf toolchains (protoc plugins) in Go.
 
 ### usage
 
-- install it
+- install it with Homebrew
 
-````bash
-go install github.com/<username>/go-protobuf-toolchain-template/cmd/protoc-gen-echo@latest
-````
+```bash
+brew install labset/tap/go-protobuf-toolchain-template
+```
+
+This installs both `protoc-gen-echo` and `echo-lint-plugin`.
+
+- install it with `go install`
+
+```bash
+go install github.com/labset/go-protobuf-toolchain-template/cmd/protoc-gen-echo@latest
+go install github.com/labset/go-protobuf-toolchain-template/cmd/echo-lint-plugin@latest
+```
+
+- install it with mise (via the `go` backend)
+
+```bash
+mise use "go:github.com/labset/go-protobuf-toolchain-template/cmd/protoc-gen-echo@latest"
+mise use "go:github.com/labset/go-protobuf-toolchain-template/cmd/echo-lint-plugin@latest"
+```
+
+or pin them in a project's `mise.toml`:
+
+```toml
+[tools]
+"go:github.com/labset/go-protobuf-toolchain-template/cmd/protoc-gen-echo" = "latest"
+"go:github.com/labset/go-protobuf-toolchain-template/cmd/echo-lint-plugin" = "latest"
+```
 
 ## Development
 
